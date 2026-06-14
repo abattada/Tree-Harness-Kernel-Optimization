@@ -254,15 +254,18 @@ on 14 operators, 74\% were correct and 43\% of operators cleared $1.2\times$
 
 \begin{table}[t]
   \centering \footnotesize
-  \caption{DeepSeek API loop aggregate. $\text{fast}_p$ is the fraction of
-  operators whose best speedup exceeds $p$.}
+  \caption{DeepSeek API-loop totals (14 operators).}
   \label{tab:ds}
-  \begin{tabular}{cccccc}
+  \begin{tabular}{lrl}
     \toprule
-    Cands & Correct & $\text{fast}_{1.0}$ & $\text{fast}_{1.2}$ &
-      GPU-min & Mtokens \\
+    Metric & Value & Unit \\
     \midrule
-    222 & 0.74 & 0.71 & 0.43 & 15.4 & 1.52 \\
+    Candidates generated            & 222  & kernels \\
+    Passed correctness              & 74   & \% of candidates \\
+    Operators with $>\!1\times$ speedup    & 71 & \% of operators \\
+    Operators with $>\!1.2\times$ speedup  & 43 & \% of operators \\
+    GPU evaluation time             & 15.4 & minutes \\
+    LLM tokens used                 & 1.52 & million \\
     \bottomrule
   \end{tabular}
 \end{table}
