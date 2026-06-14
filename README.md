@@ -16,19 +16,19 @@ export DEEPSEEK_API_KEY=...
 
 關鍵套件版本(見 [requirements.txt](requirements.txt)):
 
-| 套件 | 版本 | 用途 |
-|---|---|---|
-| Python | 3.11+ | runtime |
-| `torch` | ≥ 2.7(CUDA build,例:cu128) | tensor / `do_bench` 計時基準 |
-| `triton` | ≥ 3.3 | kernel DSL + `triton.autotune` 參數搜尋 |
-| `openai` | ≥ 1.60 | DeepSeek OpenAI 相容 SDK(`logprobs`/`thinking`) |
-| `pydantic` | ≥ 2.6 | config / 結果 schema 驗證 |
-| `pyyaml` | ≥ 6.0 | arm config 讀取 |
-| `pandas` | ≥ 2.0 | metrics 聚合與比較表 |
-| `matplotlib` | ≥ 3.8 | budget curves 繪圖 |
-| `tabulate` | ≥ 0.9 | `compare_table.md` 輸出 |
+| 套件 | 需求下限 | 實測版本 | 用途 |
+|---|---|---|---|
+| Python | 3.11+ | 3.11.15 | runtime |
+| `torch` | ≥ 2.7(CUDA build) | 2.11.0+cu128 | tensor / `do_bench` 計時基準 |
+| `triton` | ≥ 3.3 | 3.6.0 | kernel DSL + `triton.autotune` 參數搜尋 |
+| `openai` | ≥ 1.60 | 2.41.1 | DeepSeek OpenAI 相容 SDK(`logprobs`/`thinking`) |
+| `pydantic` | ≥ 2.6 | 2.13.4 | config / 結果 schema 驗證 |
+| `pyyaml` | ≥ 6.0 | 6.0.3 | arm config 讀取 |
+| `pandas` | ≥ 2.0 | 3.0.3 | metrics 聚合與比較表 |
+| `matplotlib` | ≥ 3.8 | 3.10.9 | budget curves 繪圖 |
+| `tabulate` | ≥ 0.9 | 0.10.0 | `compare_table.md` 輸出 |
 
-torch 請先依驅動對應的 CUDA build 安裝,例如
+實測版本為本專案實驗所用環境(CUDA 12.8)。torch 請先依驅動對應的 CUDA build 安裝,例如
 `pip install torch --index-url https://download.pytorch.org/whl/cu128`。
 
 LLM 用 DeepSeek API(OpenAI 相容,`deepseek-v4-flash`,$0.14/$0.28 per 1M tokens、
