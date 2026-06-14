@@ -7,7 +7,8 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -21,12 +22,19 @@
 \BIBdecl
 
 \bibitem{tillet2019triton}
-P.~Tillet, H.~T. Kung, and D.~Cox, ``Triton: an intermediate language and compiler for tiled neural network computations,'' in \emph{Proceedings of the 3rd ACM SIGPLAN International Workshop on Machine Learning and Programming Languages (MAPL)}, 2019, pp. 10--19.
+P.~Tillet, H.~T. Kung, and D.~Cox, ``Triton: an intermediate language and
+  compiler for tiled neural network computations,'' in \emph{Proceedings of the
+  3rd ACM SIGPLAN International Workshop on Machine Learning and Programming
+  Languages (MAPL)}, 2019, pp. 10--19.
 
 \bibitem{hsu2024liger}
-P.-L. Hsu, Y.~Dai, V.~Kothapalli, Q.~Song, S.~Tang, S.~Zhu \emph{et~al.}, ``Liger kernel: Efficient triton kernels for llm training,'' \emph{arXiv preprint arXiv:2410.10989}, 2024.
+P.-L. Hsu, Y.~Dai, V.~Kothapalli, Q.~Song, S.~Tang, S.~Zhu \emph{et~al.},
+  ``Liger kernel: Efficient triton kernels for llm training,'' \emph{arXiv
+  preprint arXiv:2410.10989}, 2024.
 
 \bibitem{ouyang2025kernelbench}
-A.~Ouyang, S.~Guo, S.~Arora, A.~L. Zhang, W.~Hu, C.~R{\'e}, and A.~Mirhoseini, ``Kernelbench: Can llms write efficient gpu kernels?'' \emph{arXiv preprint arXiv:2502.10517}, 2025.
+A.~Ouyang, S.~Guo, S.~Arora, A.~L. Zhang, W.~Hu, C.~R{\'e}, and A.~Mirhoseini,
+  ``Kernelbench: Can llms write efficient gpu kernels?'' \emph{arXiv preprint
+  arXiv:2502.10517}, 2025.
 
 \end{thebibliography}
