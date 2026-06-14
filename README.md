@@ -1,4 +1,4 @@
-# pro_max — LLM Tree-Search Triton Kernel Optimization Harness
+# LLM Tree-Search Triton Kernel Optimization Harness
 
 自動化 closed-loop:LLM(DeepSeek)生成 Triton kernel 候選 → 編譯/正確性/實測(獨立 subprocess、GPU pool)→ 有記憶的 LLM 評分(roofline 錨定)→ top-k beam 展開下一輪。每個機制都有 ablation 開關,baseline(單路徑 sequential refinement)是同一 harness 的一個模式,**等預算可比**。
 
@@ -10,10 +10,26 @@
 ## 環境
 
 ```bash
-conda activate pro_max          # python 3.11 + torch cu128 + triton + openai SDK
+pip install -r requirements.txt   # 先依你的 CUDA 版本裝對應的 torch wheel
 export DEEPSEEK_API_KEY=...
-cd para_final/pro_max
 ```
+
+關鍵套件版本(見 [requirements.txt](requirements.txt)):
+
+| 套件 | 版本 | 用途 |
+|---|---|---|
+| Python | 3.11+ | runtime |
+| `torch` | ≥ 2.7(CUDA build,例:cu128) | tensor / `do_bench` 計時基準 |
+| `triton` | ≥ 3.3 | kernel DSL + `triton.autotune` 參數搜尋 |
+| `openai` | ≥ 1.60 | DeepSeek OpenAI 相容 SDK(`logprobs`/`thinking`) |
+| `pydantic` | ≥ 2.6 | config / 結果 schema 驗證 |
+| `pyyaml` | ≥ 6.0 | arm config 讀取 |
+| `pandas` | ≥ 2.0 | metrics 聚合與比較表 |
+| `matplotlib` | ≥ 3.8 | budget curves 繪圖 |
+| `tabulate` | ≥ 0.9 | `compare_table.md` 輸出 |
+
+torch 請先依驅動對應的 CUDA build 安裝,例如
+`pip install torch --index-url https://download.pytorch.org/whl/cu128`。
 
 LLM 用 DeepSeek API(OpenAI 相容,`deepseek-v4-flash`,$0.14/$0.28 per 1M tokens、
 cache hit $0.0028):原生支援 `logprobs`(DeepConf 信心可用)、`thinking` 參數
