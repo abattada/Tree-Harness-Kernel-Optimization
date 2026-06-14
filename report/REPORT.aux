@@ -4,10 +4,10 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{tillet2019triton}
 \citation{hsu2024liger}
-\citation{ouyang2025kernelbench}
-\citation{hsu2024liger}
 \@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {II}Background and Related Work}{1}{section.2}\protected@file@percent }
+\citation{ouyang2025kernelbench}
+\citation{hsu2024liger}
 \@writefile{toc}{\contentsline {section}{\numberline {III}Methodology}{2}{section.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Closed loop and the two engines}{2}{subsection.3.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Prompt-engineering design}{2}{subsection.3.2}\protected@file@percent }
@@ -21,11 +21,11 @@
 \newlabel{fig:pipeline}{{1}{3}{The closed-loop harness. Engine~A (DeepSeek API loop) and Engine~B (Claude Code agent) are two entry points into one shared evaluator; all persisted artifacts (logs, transcripts, winning configurations) are produced by the evaluator, not the generator}{figure.1}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces The \texttt  {HARNESS.md} agent-handoff contract: what the agent reads at the start of a session, what it writes (all through the same \texttt  {eval\_one} evaluator as Engine~A), and its iteration scope. This is how operators that the one-shot API loop cannot solve are completed by an agent.}}{3}{figure.2}\protected@file@percent }
 \newlabel{fig:harness}{{2}{3}{The \texttt {HARNESS.md} agent-handoff contract: what the agent reads at the start of a session, what it writes (all through the same \texttt {eval\_one} evaluator as Engine~A), and its iteration scope. This is how operators that the one-shot API loop cannot solve are completed by an agent}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Scaling the generator: flash vs.\ pro}{3}{subsection.5.1}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces DeepSeek API loop: best valid speedup per operator over PyTorch eager. Blue: headroom group; grey: control group at the memory roofline.}}{4}{figure.3}\protected@file@percent }
 \newlabel{fig:dsbar}{{3}{4}{DeepSeek API loop: best valid speedup per operator over PyTorch eager. Blue: headroom group; grey: control group at the memory roofline}{figure.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Claude Code agent on \texttt  {int4\_gemm}: best-so-far speedup over a cuBLAS+dequantize baseline. Two failed attempts, then a correct kernel and a tuning ladder to $1.09\times $.}}{4}{figure.4}\protected@file@percent }
 \newlabel{fig:ladder}{{4}{4}{Claude Code agent on \texttt {int4\_gemm}: best-so-far speedup over a cuBLAS+dequantize baseline. Two failed attempts, then a correct kernel and a tuning ladder to $1.09\times $}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Scaling the generator: flash vs.\ pro}{4}{subsection.5.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {VI}Discussion and Analysis}{4}{section.6}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Head-to-head on the hardest operators (correct/attempts; best speedup where any candidate is correct).}}{4}{table.2}\protected@file@percent }
 \newlabel{tab:h2h}{{II}{4}{Head-to-head on the hardest operators (correct/attempts; best speedup where any candidate is correct)}{table.2}{}}

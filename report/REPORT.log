@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.1)  14 JUN 2026 14:59
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.1)  14 JUN 2026 15:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -615,19 +615,19 @@ Package hyperref Info: Link coloring OFF on input line 39.
 \@outlinefile=\write4
 \openout4 = `REPORT.out'.
 
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 61.
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 67.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 63.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 69.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 63.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 69.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 72.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 78.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}
@@ -635,34 +635,38 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 
 ] (./make_pipeline_fig.tex)
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <10> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 177.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 185.
  (./make_harness_fig.tex
 Underfull \hbox (badness 5475) in paragraph at lines 33--33
 []$\OMS/cmsy/m/n/9 ^^O$ \OT1/pcr/m/n/9 best.py 
  []
 
 )
-Underfull \hbox (badness 3271) in paragraph at lines 206--223
+Underfull \hbox (badness 3271) in paragraph at lines 214--231
 []\OT1/ptm/m/n/10 All mea-sure-ments come from one eval-u-a-tor run as
  []
 
 
-Underfull \hbox (badness 5711) in paragraph at lines 206--223
+Underfull \hbox (badness 5711) in paragraph at lines 214--231
 \OT1/ptm/m/n/10 an iso-lated sub-pro-cess bound to a sin-gle GPU via
  []
 
 <figures/deepseek_speedup.png, id=105, 650.43pt x 303.534pt>
 File: figures/deepseek_speedup.png Graphic file (type png)
 <use figures/deepseek_speedup.png>
-Package pdftex.def Info: figures/deepseek_speedup.png  used on input line 238.
+Package pdftex.def Info: figures/deepseek_speedup.png  used on input line 246.
 (pdftex.def)             Requested size: 252.0pt x 117.59967pt.
-<figures/int4gemm_ladder.png, id=108, 505.89pt x 303.534pt>
+[2]
+<figures/int4gemm_ladder.png, id=122, 505.89pt x 303.534pt>
 File: figures/int4gemm_ladder.png Graphic file (type png)
 <use figures/int4gemm_ladder.png>
-Package pdftex.def Info: figures/int4gemm_ladder.png  used on input line 273.
+Package pdftex.def Info: figures/int4gemm_ladder.png  used on input line 281.
 (pdftex.def)             Requested size: 206.64185pt x 123.98659pt.
-[2] [3] [4 <./figures/deepseek_speedup.png> <./figures/int4gemm_ladder.png>] (./REPORT.bbl)
-Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 426.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3] [4 <./figures/deepseek_speedup.png> <./figures/int4gemm_ladder.png>] (./REPORT.bbl)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 434.
  (./appendix/input_prompt.txt
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -707,16 +711,16 @@ Package rerunfilecheck Info: File `REPORT.out' has not changed.
 Here is how much of TeX's memory you used:
  23949 strings out of 476182
  437039 string characters out of 5795596
- 3009975 words of memory out of 5000000
+ 3057975 words of memory out of 5000000
  45077 multiletter control sequences out of 15000+600000
  610043 words of font info for 139 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  84i,12n,87p,477b,1968s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on REPORT.pdf (9 pages, 366322 bytes).
+Output written on REPORT.pdf (9 pages, 366820 bytes).
 PDF statistics:
- 770 PDF objects out of 1000 (max. 8388607)
- 709 compressed objects within 8 object streams
+ 771 PDF objects out of 1000 (max. 8388607)
+ 710 compressed objects within 8 object streams
  462 named destinations out of 1000 (max. 500000)
  159 words of extra memory for PDF output out of 10000 (max. 10000000)
 

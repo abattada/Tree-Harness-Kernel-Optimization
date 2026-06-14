@@ -44,7 +44,13 @@ Two Generation Engines on a 17-Operator Suite\\
 
 \author{%
 \IEEEauthorblockN{[Wei-Ke, Chu]}
-\IEEEauthorblockA{{[R13922198]} \\ {[Computer Science / National Taiwan University]} \\ abat52875@gmail.com}%
+\IEEEauthorblockA{{[R13922198]} \\ {[Computer Science / National Taiwan University]} \\ abat52875@gmail.com}
+\and
+\IEEEauthorblockN{[Ju-Hsuan, Wang]}
+\IEEEauthorblockA{{[R13945026]} \\ {[Computer Science / National Taiwan University]}}
+\and
+\IEEEauthorblockN{[Wen-An, Wen]}
+\IEEEauthorblockA{{[R13944053]} \\ {[Computer Science / National Taiwan University]}}%
 }
 
 \maketitle
@@ -69,7 +75,9 @@ generator to the larger \textsc{DeepSeek-v4-pro} does not fix it (still 0/12). T
 agentic engine solved it to $1.09\times$ over a cuBLAS-plus-dequantize baseline,
 and reached about $5\times$ on fused-linear cross-entropy, another compute-bound
 problem the API loop could not crack. The engines are complementary. Every number is derived mechanically from per-candidate run logs
-at a total LLM cost of \$0.22.
+at a total LLM cost of \$0.22. Code, run logs, and the scripts that regenerate
+every figure and table are available at
+\url{https://github.com/abattada/Tree-Harness-Kernel-Optimization}.
 \end{abstract}
 
 \begin{IEEEkeywords}
