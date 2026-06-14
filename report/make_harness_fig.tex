@@ -1,0 +1,42 @@
+% TikZ figure of the HARNESS.md agent-handoff contract: what the agent READS,
+% what it WRITES, and its ITERATION scope. \input inside a figure* environment.
+\begin{tikzpicture}[
+    font=\small,
+    panel/.style={draw, rounded corners, align=left, text width=40mm,
+                  fill=blue!4, inner sep=5pt},
+    agent/.style={draw, rounded corners, align=center, text width=34mm,
+                  fill=orange!14, inner sep=4pt, minimum height=12mm},
+    ev/.style={draw, rounded corners, align=center, text width=34mm,
+               fill=green!9, inner sep=4pt, minimum height=12mm},
+    arr/.style={-{Latex[length=2mm]}, thick},
+  ]
+
+  \node[panel] (reads) at (0,0) {\textbf{Agent READS} (session start)\\[3pt]
+    $\bullet$ task card: signature, tolerance,\\ \phantom{$\bullet$} PyTorch reference, forbidden\\ \phantom{$\bullet$} ops, roofline target\\
+    $\bullet$ KB exemplars (similar wins)\\
+    $\bullet$ handoff: \texttt{STATE.md},\\ \phantom{$\bullet$} \texttt{best.py}, journal tail};
+
+  \node[agent] (agent) at (6.6,1.5)
+    {\textbf{Agent} (Claude Opus,\\ effort ``extra high'')\\ write / refine kernel};
+  \node[ev] (eval) at (6.6,-1.5)
+    {\texttt{eval\_one}: compile $\to$\\ anti-cheat $\to$ correctness\\ $\to$ \texttt{do\_bench} timing};
+  \draw[arr] (agent) to[bend left=22]
+        node[midway,right,font=\scriptsize,align=left]{\texttt{attempts/}\\\texttt{k$N$.py}} (eval);
+  \draw[arr] (eval) to[bend left=22]
+        node[midway,left,font=\scriptsize,align=right]{\texttt{RESULT\_JSON}:\\traceback \emph{or}\\ speedup\,+\,bw} (agent);
+
+  \node[panel, fill=green!5] (writes) at (13.2,0)
+    {\textbf{Agent WRITES} (persisted)\\[3pt]
+    $\bullet$ \texttt{attempts/k$N$.py} (one/try)\\
+    $\bullet$ \texttt{journal.jsonl} via \texttt{eval\_one}\\ \phantom{$\bullet$} ($=$ budget counter; full record)\\
+    $\bullet$ \texttt{STATE.md}: status / tried /\\ \phantom{$\bullet$} pitfalls / next\\
+    $\bullet$ \texttt{best.py} (\texttt{-{}-export-best})};
+
+  \draw[arr] (reads.east) -- (agent.west);
+  \draw[arr] (agent.east) -- (writes.north west);
+  \draw[arr] (eval.east) -- (writes.south west);
+
+  \node[align=center, font=\footnotesize\itshape] at (6.6,-3.4)
+    {ITERATION SCOPE: budget $=$ journal line count; loop write\,$\to$\,eval\,$\to$\,read\,$\to$\,refine
+     until budget spent or roofline saturation};
+\end{tikzpicture}

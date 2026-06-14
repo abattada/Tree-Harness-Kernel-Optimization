@@ -1,0 +1,15 @@
+arm: minimal
+search:
+  mode: tree
+  beam_k: 2
+  expand_strategies: 3
+  impls_per_strategy: 2
+  rounds: 3
+strategy:
+  selector: none            # no strategy assignment -> free-refinement branching
+scorer:
+  enabled: false
+  use_suggestions: false
+budget:
+  total_candidates: 12
+  minutes_per_operator: 15

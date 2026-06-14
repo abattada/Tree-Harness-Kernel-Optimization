@@ -1,0 +1,8 @@
+arm,operator,round,candidates_so_far,best_speedup_so_far,n_correct_so_far,cum_gpu_seconds,cum_tokens
+minimal_kb,rope,0,4,3.228603,2,16.4,19370
+minimal_kb,kl_div,0,4,4.418128,1,15.8,22492
+minimal_kb,welford,0,4,2.246740,2,12.3,18087
+minimal_kb,cross_entropy,0,4,2.117271,1,18.4,24051
+minimal_kb,geglu,0,4,1.673228,3,16.6,15696
+minimal_kb,rms_norm,0,4,2.310345,4,13.8,17905
+minimal_kb,embedding,0,4,0.000000,2,14.3,16007

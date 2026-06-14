@@ -1,0 +1,26 @@
+{
+  "arm": "pilot_full_pro",
+  "operators": [
+    "geglu",
+    "swiglu",
+    "welford",
+    "rms_norm",
+    "cross_entropy",
+    "fused_linear_cross_entropy",
+    "kl_div",
+    "gemm",
+    "addmm",
+    "int4_gemm",
+    "rope",
+    "embedding"
+  ],
+  "started": "2026-06-14T12:43:59.335412",
+  "llm": {
+    "model": "deepseek-v4-pro",
+    "base_url": "https://api.deepseek.com",
+    "thinking_param": true,
+    "logprobs": true,
+    "cache_fields": true,
+    "confidence_mode_resolved": "logprobs"
+  }
+}

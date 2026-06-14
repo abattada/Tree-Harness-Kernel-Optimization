@@ -1,0 +1,12 @@
+arm: pilot_full_pro
+search:
+  mode: tree
+  beam_k: 2
+  expand_strategies: 3
+  impls_per_strategy: 2
+  rounds: 3
+llm:
+  model: deepseek-v4-pro    # model-strength hypothesis test
+budget:
+  total_candidates: 12
+  minutes_per_operator: 20

@@ -1,0 +1,10 @@
+{
+  "arm": "minimal_kb",
+  "wall_minutes": 2.2380858937899273,
+  "best_speedup": {
+    "gemm": 0.0
+  },
+  "total_candidates": 12,
+  "total_tokens": 65229,
+  "total_gpu_seconds": 24.964158058166504
+}

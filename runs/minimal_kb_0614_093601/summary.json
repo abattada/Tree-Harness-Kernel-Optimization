@@ -1,0 +1,14 @@
+{
+  "arm": "minimal_kb",
+  "wall_minutes": 2.160678188006083,
+  "best_speedup": {
+    "vector_add": 0.9992320820231272,
+    "softmax": 1.005298109781488,
+    "sum": 0.988368048004504,
+    "layer_norm": 1.0689593249904645,
+    "vector_exp": 1.000739650574947
+  },
+  "total_candidates": 30,
+  "total_tokens": 159983,
+  "total_gpu_seconds": 108.652508020401
+}

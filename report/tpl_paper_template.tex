@@ -1,0 +1,194 @@
+%==============================================================================
+%  FINAL PROJECT PAPER TEMPLATE  (IEEE Conference format)
+%  ---------------------------------------------------------------------------
+%  HOW TO USE THIS TEMPLATE
+%   1. Set your PROJECT CATEGORY (A or B) on the title page -- reviewers need it.
+%   2. Replace every gray [bracketed] note with your own content, then delete it.
+%   3. PAGE LIMIT: 6 pages MAXIMUM, including references. The Appendix of raw
+%      materials (prompts / output) does NOT count toward the limit -- if it is
+%      long, put it in a repository and link to it instead.
+%   4. Reproducibility matters: a large share of your grade comes from reviewers
+%      OUTSIDE your sub-topic. Write the Introduction, Setup, and figures so that
+%      a classmate who is NOT an expert in your area can still follow you.
+%   5. Compile on Overleaf with pdfLaTeX. IEEEtran is pre-installed there.
+%==============================================================================
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+
+% --- page-budget check: records where the main body + references end, and
+%     reminds you in the compile log if it exceeds the 6-page limit.
+\newcommand{\mainbodyendpage}{?}
+\AtEndDocument{%
+  \typeout{====================================================}%
+  \typeout{[PAGE BUDGET] Main body + references end on page \mainbodyendpage\space (limit: 6, Appendix excluded).}%
+  \typeout{====================================================}%
+}
+
+% --- helper: gray placeholder text. Delete each \guide{...} once you fill it in.
+\newcommand{\guide}[1]{{\color{gray}\textit{[#1]}}}
+
+% --- style for verbatim prompts / agent output in the Appendix (Category B)
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  columns=fullflexible,
+  showstringspaces=false,
+  keepspaces=true,
+  xleftmargin=0.5em
+}
+
+\begin{document}
+
+\title{[Your Project Title]\\
+{\footnotesize Final Project --- Parallel Programming, Spring 2026}}
+
+\author{%
+\IEEEauthorblockN{[Student Name(s)]}
+\IEEEauthorblockA{[Student ID(s)] \\ {[Department / Institution]} \\ {[email]}}%
+}
+
+\maketitle
+
+%------------------------------------------------------------------------------
+\begin{abstract}
+\guide{One short paragraph (about 150--200 words). State the problem, what you
+did, and the headline result. Write it so a non-expert classmate understands the
+gist.}
+\end{abstract}
+
+\begin{IEEEkeywords}
+\guide{4--6 keywords, comma separated.}
+\end{IEEEkeywords}
+
+\vspace{0.5em}
+\noindent\fbox{\parbox{0.97\columnwidth}{\textbf{Project Category:}\quad
+$\square$~\textbf{A} (Self-chosen topic)\qquad
+$\square$~\textbf{B} (AI-agent code optimization)\\[2pt]
+\footnotesize Tick exactly one. This tells reviewers which lens to apply.}}
+
+\vspace{0.4em}
+{\color{gray}\footnotesize\textit{[Page limit: 6 pages maximum, including
+references. The Appendix of raw materials does not count toward the limit.
+Delete this note before submitting.]}}
+
+%------------------------------------------------------------------------------
+\section{Introduction}
+\guide{What problem are you solving and why does it matter? Motivate it for a
+reader who is in this course but NOT a specialist in your sub-topic. End with a
+1--2 sentence summary of your contribution.}
+
+%------------------------------------------------------------------------------
+\section{Background and Related Work}
+% Category A: background needed to understand your problem (e.g. the parallel
+%             system, the algorithm, prior optimization approaches).
+% Category B: introduce the benchmark/dataset, the baseline you start from, and
+%             the AI agent / tooling setup. Describe the dataset's content and
+%             characteristics, and whether you use the full set or a subset.
+\guide{Give the reader the background and prior work needed to understand your
+approach. (Cat.~B: introduce the benchmark and dataset here -- what is in it,
+its characteristics, and whether you use all problems or a subset, and why.)}
+
+%------------------------------------------------------------------------------
+\section{Methodology}
+% Category A: your optimization / design approach. What did you change, and why?
+% Category B: your AI prompt-engineering design -- how you instruct and guide the
+%             agent, your iteration strategy, and the agent configuration.
+\guide{Describe your approach clearly enough that the key decisions are
+justified, not just stated.}
+\guide{Cat.~A: the optimization or design, what you changed, and the reasoning.}
+\guide{Cat.~B: the prompt-engineering design -- input prompt, system prompt,
+agent configuration, and how you iterated to guide the agent. Reference the full
+verbatim materials in the Appendix.}
+
+%------------------------------------------------------------------------------
+\section{Experimental Setup}
+\guide{Hardware and software environment; how you measure speedup / throughput;
+how many repetitions; how you verify correctness is preserved. Be specific
+enough that someone could reproduce your numbers. (Cat.~B: define what counts as
+a ``success'' vs. ``failure,'' e.g. a speedup threshold with correctness
+maintained.)}
+
+%------------------------------------------------------------------------------
+\section{Results}
+\guide{Present your results with clearly labeled tables/figures. Make sure a
+reader can tell what is being compared and against what baseline.}
+
+% Example figure (delete if unused):
+% \begin{figure}[t]
+%   \centering
+%   \includegraphics[width=\columnwidth]{your_figure.pdf}
+%   \caption{Caption describing what the reader should take away.}
+%   \label{fig:results}
+% \end{figure}
+
+%------------------------------------------------------------------------------
+\section{Discussion and Analysis}
+% This section carries a lot of weight. Depth of analysis is graded heavily.
+% Category A: where does your approach work well, and where does it break down?
+%             What are the limitations?
+% Category B: ROOT-CAUSE ANALYSIS of the cases where the agent FAILED. Why did
+%             optimization fail on those problems specifically? (e.g. memory
+%             behavior, data dependencies, what profiling revealed.)
+\guide{Go deep. Cat.~A: explain why it works and its limitations. Cat.~B:
+analyze WHY the failed cases failed -- this is the heart of a Category B paper.}
+
+%------------------------------------------------------------------------------
+\section{Conclusion}
+\guide{Summarize the contribution and the main takeaway. Optionally, future
+work.}
+
+%------------------------------------------------------------------------------
+\section*{Acknowledgment}
+\guide{Optional.}
+
+%------------------------------------------------------------------------------
+\begin{thebibliography}{00}
+\bibitem{ref1} \guide{Author, ``Title,'' \emph{Venue}, year. Replace with real
+references. You may also switch to BibTeX if you prefer.}
+\end{thebibliography}
+
+% ---- end of main body + references. Everything below is the Appendix and is
+%      NOT counted toward the 6-page limit. ----
+\xdef\mainbodyendpage{\thepage}
+
+%==============================================================================
+%  APPENDIX -- REQUIRED RAW MATERIALS
+%  Category B: this appendix is REQUIRED. Include the verbatim input prompt,
+%  system prompt, representative agent output, and the changes you made to the
+%  agent. If the material is very long, include representative excerpts here and
+%  link to a repository for the complete set.
+%  Category A: optional (use for extra data, full tables, etc.).
+%==============================================================================
+\appendices
+
+\section{Input Prompt}
+\begin{lstlisting}
+[Paste your input prompt here verbatim.]
+\end{lstlisting}
+
+\section{System Prompt}
+\begin{lstlisting}
+[Paste your system prompt here verbatim.]
+\end{lstlisting}
+
+\section{Representative Agent Output}
+\begin{lstlisting}
+[Paste representative agent output here.]
+\end{lstlisting}
+
+\section{Changes Made to the Agent}
+\guide{Describe and/or show the modifications you made to the agent
+(configuration, tools provided, iteration on instructions, etc.).}
+
+\end{document}

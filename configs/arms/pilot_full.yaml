@@ -1,0 +1,10 @@
+arm: pilot_full
+search:
+  mode: tree
+  beam_k: 2               # 縮小但保留「分支+淘汰」的本質
+  expand_strategies: 3
+  impls_per_strategy: 2
+  rounds: 3
+budget:
+  total_candidates: 12    # 預算:4 seeds + 8 展開
+  minutes_per_operator: 15

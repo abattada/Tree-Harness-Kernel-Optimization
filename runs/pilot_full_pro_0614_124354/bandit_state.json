@@ -1,0 +1,274 @@
+{
+  "elementwise": {
+    "mask_elimination": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "constexpr_specialize": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "cache_eviction_hints": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "kernel_fusion": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "grid_loop_remap": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "fast_math": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "tune_warps_stages": {
+      "n": 4,
+      "mean_reward": 0.0024093981216223377
+    },
+    "vectorized_access": {
+      "n": 4,
+      "mean_reward": 0.0
+    },
+    "tune_block_size": {
+      "n": 8,
+      "mean_reward": 0.013143851542399144
+    }
+  },
+  "normalization": {
+    "cache_eviction_hints": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "tune_warps_stages": {
+      "n": 2,
+      "mean_reward": 0.01025931591810117
+    },
+    "kernel_fusion": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "tune_block_size": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "constexpr_specialize": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "multirow_per_program": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "one_pass_welford": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "vectorized_access": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "mask_elimination": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "online_softmax": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "fast_math": {
+      "n": 2,
+      "mean_reward": 0.0017693010155727844
+    },
+    "recompute_vs_store": {
+      "n": 0,
+      "mean_reward": 0.0
+    }
+  },
+  "reduction": {
+    "vectorized_access": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "two_stage_reduction": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "constexpr_specialize": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "recompute_vs_store": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "atomic_free_combine": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "cache_eviction_hints": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "persistent_kernel": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "grid_loop_remap": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "one_pass_welford": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "multirow_per_program": {
+      "n": 4,
+      "mean_reward": 0.0
+    },
+    "tune_block_size": {
+      "n": 2,
+      "mean_reward": 0.00030048306062599743
+    },
+    "tune_warps_stages": {
+      "n": 2,
+      "mean_reward": 0.0
+    }
+  },
+  "loss": {
+    "fast_math": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "online_softmax": {
+      "n": 2,
+      "mean_reward": 0.7275720596404704
+    },
+    "cache_eviction_hints": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "kernel_fusion": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "tune_warps_stages": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "constexpr_specialize": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "atomic_free_combine": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "two_stage_reduction": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "persistent_kernel": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "recompute_vs_store": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "tune_block_size": {
+      "n": 6,
+      "mean_reward": 0.340851277230472
+    },
+    "multirow_per_program": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "vectorized_access": {
+      "n": 4,
+      "mean_reward": 0.02123526455609246
+    }
+  },
+  "misc": {
+    "constexpr_specialize": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "grid_loop_remap": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "cache_eviction_hints": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "mask_elimination": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "tune_warps_stages": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "tune_block_size": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "kernel_fusion": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "vectorized_access": {
+      "n": 4,
+      "mean_reward": 0.0025596610858179838
+    },
+    "multirow_per_program": {
+      "n": 2,
+      "mean_reward": 0.002469585537481041
+    }
+  },
+  "matmul": {
+    "constexpr_specialize": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "split_k": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "tiling_shapes": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "cache_eviction_hints": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "group_swizzle": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "precision_strategy": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "vectorized_access": {
+      "n": 0,
+      "mean_reward": 0.0
+    },
+    "tune_block_size": {
+      "n": 2,
+      "mean_reward": 0.0
+    },
+    "tune_warps_stages": {
+      "n": 2,
+      "mean_reward": 0.0031406392600659885
+    },
+    "persistent_kernel": {
+      "n": 0,
+      "mean_reward": 0.0
+    }
+  }
+}

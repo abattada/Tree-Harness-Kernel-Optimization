@@ -1,0 +1,53 @@
+% TikZ architecture figure for the closed-loop harness and the two engines.
+% \input{make_pipeline_fig.tex} inside a figure environment in REPORT.tex.
+% Layout uses explicit coordinates and routes every feedback line through an
+% empty band so no arrow ever crosses a box.
+\begin{tikzpicture}[
+    font=\small,
+    box/.style={draw, rounded corners, align=center, text width=24mm,
+                minimum height=11mm, inner sep=3pt, fill=blue!5},
+    eng/.style={draw, rounded corners, align=center, text width=24mm,
+                minimum height=11mm, inner sep=3pt, fill=orange!12},
+    store/.style={draw, align=center, text width=28mm, minimum height=10mm,
+                  inner sep=3pt, fill=green!8},
+    arr/.style={-{Latex[length=2mm]}, thick},
+  ]
+
+  % main row (y=0)
+  \node[box] (seed)  at (0,0)     {Seed strategies \\ \& design hints};
+  \node[eng] (gen)   at (3.8,0)   {LLM generation \\ \textbf{DeepSeek v4-flash}};
+  \node[box] (eval)  at (7.8,0)   {Isolated eval: \texttt{eval\_one} \\ compile / correct / \\ \texttt{do\_bench} (1 GPU)};
+  \node[box] (score) at (11.8,0)  {Roofline-anchored \\ LLM scorer};
+
+  % satellites
+  \node[store] (kb)   at (3.8,2.3)  {Knowledge base \\ (success exemplars)};
+  \node[store] (jrn)  at (7.8,-2.3) {Journal / metrics / \\ transcripts / winning\_config};
+  \node[box]   (beam) at (11.8,-2.3){Top-$k$ beam \\ selection};
+  \node[eng]   (agent) at (0,-2.3)  {\textbf{Claude Code agent} \\ writes kernel, calls \\ \texttt{eval\_one}, iterates};
+
+  % straight links
+  \draw[arr] (seed) -- (gen);
+  \draw[arr] (gen)  -- node[above,font=\scriptsize]{candidate} (eval);
+  \draw[arr] (eval) -- node[above,font=\scriptsize]{result} (score);
+  \draw[arr] (kb)   -- (gen);
+  \draw[arr] (eval) -- (jrn);
+  \draw[arr] (score) -- (beam);
+
+  % beam -> gen feedback ("expand"): down, left along the lowest band, up into gen
+  \draw[arr] (beam.south) -- (11.8,-3.7) -- node[below,font=\scriptsize,pos=0.62]{expand next round}
+        (3.8,-3.7) -- (gen.south);
+
+  % journal -> KB feedback (dashed): up the gap between gen and eval (x=5.8)
+  \draw[arr,dashed] (jrn.west) -- (5.8,-2.3) -- node[right,font=\scriptsize,pos=0.88]{build KB}
+        (5.8,2.3) -- (kb.east);
+
+  % Claude agent -> eval ("hard problems"): up the far left, across an empty band
+  % (y=-1.1) above the journal, into eval from below -- crosses no box.
+  \draw[arr] (agent.north) -- (0,-1.1) -- node[below,font=\scriptsize,pos=0.32]{hard problems}
+        (7.8,-1.1) -- (eval.south);
+
+  % engine labels, clear of every box and routed line
+  \node[font=\footnotesize\itshape, anchor=west] at (8.0,2.3)  {Engine A: automated API loop};
+  \node[font=\footnotesize\itshape, anchor=west] at (-1.3,-4.3) {Engine B: agentic, for hard problems};
+
+\end{tikzpicture}

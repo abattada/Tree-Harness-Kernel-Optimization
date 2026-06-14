@@ -1,0 +1,26 @@
+== pilot sample: 222 candidates, 14 operators, arms: ['minimal_kb']
+
+per-candidate distribution:
+       input_tokens  cached_tokens  input_miss  output_tokens  thought_tokens  gpu_seconds  wall_time
+count         222.0          222.0       222.0          222.0           222.0        222.0      222.0
+mean         3818.0         2815.0      1003.0         3024.0          2107.0          4.0      106.0
+std           829.0         1168.0      1187.0         1691.0          1476.0          1.0       70.0
+min          1964.0         1536.0         1.0          707.0           189.0          2.0       18.0
+50%          3660.0         2688.0       122.0         2648.0          1798.0          4.0       96.0
+90%          4891.0         4480.0      2492.0         4727.0          3649.0          5.0      212.0
+max          7292.0         5504.0      5628.0        12208.0         10065.0          7.0      272.0 
+
+cache hit ratio (input): 74%
+correct rate:            74%
+error types:             {'runtime': 48, 'cheat': 8, 'wrong_output': 1}
+
+measured pilot cost:        $0.221
+avg cost per candidate:     $0.0010
+extrapolated main run       (544 cands): $0.54
+extrapolated ablation suite (672 cands): $0.67
+extrapolated total:         $1.21
+
+best valid speedup at equal budget (arm x operator):
+operator    cross_entropy  embedding  geglu  kl_div  layer_norm  rms_norm   rope  softmax    sum  vector_add  vector_exp  welford
+arm                                                                                                                              
+minimal_kb          2.182      1.001  1.689   4.609       1.069     2.322  4.288    1.005  0.988       0.999       1.001    2.427

@@ -1,0 +1,16 @@
+{
+  "arm": "minimal_kb",
+  "wall_minutes": 5.030116113026937,
+  "best_speedup": {
+    "rope": 3.943467199252134,
+    "kl_div": 4.575312851416569,
+    "cross_entropy": 2.1816769518275576,
+    "welford": 2.4173629244475983,
+    "rms_norm": 2.3217607729377137,
+    "geglu": 1.6813119061521924,
+    "embedding": 1.0008407994248345
+  },
+  "total_candidates": 84,
+  "total_tokens": 561878,
+  "total_gpu_seconds": 379.2394585609436
+}

@@ -1,0 +1,105 @@
+%==============================================================================
+%  PEER REVIEW RUBRIC -- Final Project Paper
+%  One form for all reviewers. The SAME form is used whether you are reviewing a
+%  paper in your own category or another category; the weighting is applied by
+%  the teaching staff (cross-category reviews and same-category reviews count
+%  differently toward the author's grade). Score each criterion from 1 to 5.
+%  Compile on Overleaf with pdfLaTeX.
+%==============================================================================
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+
+\titlespacing*{\section}{0pt}{1.0ex}{0.6ex}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.35}
+
+% score column: fixed narrow, centered
+\newcolumntype{S}{>{\centering\arraybackslash}p{2.2cm}}
+
+\begin{document}
+
+\begin{center}
+{\large\bfseries Final Project --- Peer Review Rubric}\\[2pt]
+Parallel Programming, Spring 2026
+\end{center}
+
+\vspace{0.4em}
+
+% --- header fields filled by the reviewer ---
+\begin{tabularx}{\textwidth}{@{}lX lX@{}}
+Reviewer name: & \hrulefill & Reviewer ID: & \hrulefill \\[4pt]
+Paper / Author ID: & \hrulefill & Paper category (A / B): & \hrulefill \\
+\end{tabularx}
+
+\vspace{0.8em}
+
+\textbf{How to score.} Rate each of the seven criteria from 1 to 5. You are
+\emph{not} expected to re-verify the technical work yourself. Instead, judge
+whether the authors have explained and justified it convincingly --- something
+any classmate in this course can assess, regardless of sub-topic.
+
+\vspace{0.4em}
+
+\textbf{Scale.}\quad
+\textbf{5} Excellent \,\textbar\;
+\textbf{4} Good \,\textbar\;
+\textbf{3} Adequate \,\textbar\;
+\textbf{2} Weak \,\textbar\;
+\textbf{1} Poor / missing
+
+\vspace{0.8em}
+
+\begin{tabularx}{\textwidth}{@{}p{0.4cm} >{\raggedright\arraybackslash}p{4.0cm} X S@{}}
+\toprule
+\textbf{\#} & \textbf{Criterion} & \textbf{What to assess} & \textbf{Score (1--5)} \\
+\midrule
+
+1 & Problem \& Motivation &
+Is it clear what problem is addressed and why it matters --- even to a reader
+outside this sub-topic? & \\
+
+2 & Background Adequacy &
+Is enough background and baseline given to understand the approach? & \\
+
+3 & Methodology Clarity \& Justification &
+Is the approach described clearly, with reasonable justification for the key
+decisions? & \\
+
+4 & Core Contribution &
+Is the case for the core contribution convincing?\newline
+\textit{Cat.\ A:} the optimization / design technique.\newline
+\textit{Cat.\ B:} the prompt-engineering and agent-guidance strategy. & \\
+
+5 & Experimental Design \& Reproducibility &
+Are the environment, measurement method, and correctness check described well
+enough that the results could be reproduced? & \\
+
+6 & Results \& Depth of Analysis &
+Do the results support the claims, and is the analysis deep?\newline
+\textit{Cat.\ A:} discussion of limitations.\newline
+\textit{Cat.\ B:} root-cause analysis of the failed cases. & \\
+
+7 & Writing \& IEEE Format &
+Structure, language, and adherence to the IEEE paper format. & \\
+
+\midrule
+\multicolumn{3}{r}{\textbf{Total (out of 35)}} & \\
+\bottomrule
+\end{tabularx}
+
+\vspace{1.0em}
+
+{\color{gray}\footnotesize
+Note: All reviewers use this single form. Technical criteria are phrased as
+``is it justified / explained convincingly'' rather than ``is it correct,'' so
+they can be answered by any reviewer in the course. The teaching staff applies
+the cross-category and same-category weighting when combining scores.}
+
+\end{document}

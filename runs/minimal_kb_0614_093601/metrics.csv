@@ -1,0 +1,11 @@
+arm,operator,round,candidates_so_far,best_speedup_so_far,n_correct_so_far,cum_gpu_seconds,cum_tokens
+minimal_kb,vector_add,0,4,0.999232,4,14.8,18960
+minimal_kb,softmax,0,4,1.005298,4,15.3,16520
+minimal_kb,vector_exp,0,4,0.994186,4,13.9,18309
+minimal_kb,layer_norm,0,4,1.068959,4,14.5,19581
+minimal_kb,vector_add,1,6,0.999232,5,21.6,30355
+minimal_kb,sum,0,4,0.922200,2,13.9,26187
+minimal_kb,softmax,1,6,1.005298,5,22.2,27363
+minimal_kb,layer_norm,1,6,1.068959,6,22.1,29575
+minimal_kb,vector_exp,1,6,1.000740,6,21.1,31403
+minimal_kb,sum,1,6,0.988368,4,21.7,41287

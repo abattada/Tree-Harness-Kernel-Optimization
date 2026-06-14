@@ -1,0 +1,16 @@
+{
+  "arm": "minimal_kb",
+  "operators": [
+    "gemm"
+  ],
+  "started": "2026-06-14T13:46:47.985904",
+  "llm": {
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking_param": true,
+    "logprobs": true,
+    "cache_fields": true,
+    "confidence_mode_resolved": "logprobs",
+    "kb_entries": 26
+  }
+}

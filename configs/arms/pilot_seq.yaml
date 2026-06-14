@@ -1,0 +1,11 @@
+arm: pilot_seq
+search:
+  mode: sequential        # rounds 自動 = total_candidates(等預算)
+strategy:
+  selector: random
+scorer:
+  enabled: false
+  use_suggestions: false
+budget:
+  total_candidates: 12
+  minutes_per_operator: 15

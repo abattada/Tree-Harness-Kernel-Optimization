@@ -1,0 +1,24 @@
+{
+  "arm": "minimal_kb",
+  "operators": [
+    "rope",
+    "kl_div",
+    "cross_entropy",
+    "welford",
+    "rms_norm",
+    "geglu",
+    "embedding",
+    "int4_gemm",
+    "fused_linear_cross_entropy"
+  ],
+  "started": "2026-06-14T12:07:43.523337",
+  "llm": {
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking_param": true,
+    "logprobs": true,
+    "cache_fields": true,
+    "confidence_mode_resolved": "logprobs",
+    "kb_entries": 26
+  }
+}

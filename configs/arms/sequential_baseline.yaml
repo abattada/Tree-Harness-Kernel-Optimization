@@ -1,0 +1,8 @@
+arm: sequential_baseline
+search:
+  mode: sequential
+strategy:
+  selector: random
+scorer:
+  enabled: false
+  use_suggestions: false

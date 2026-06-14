@@ -1,0 +1,48 @@
+arm: minimal_kb
+search:
+  mode: tree
+  beam_k: 2
+  expand_strategies: 3
+  impls_per_strategy: 2
+  rounds: 3
+strategy:
+  selector: none
+scorer:
+  enabled: false
+  use_memory: true
+  use_suggestions: false
+  roofline_anchor: true
+  roofline_bw_cap: 0.85
+  headroom_beta: 0.3
+confidence:
+  mode: auto
+  use_in_score: false
+  conf_epsilon: 0.001
+budget:
+  total_candidates: 12
+  minutes_per_operator: 15
+  candidate_timeout_s: 120
+seeds:
+  input_seed: 42
+llm:
+  model: deepseek-v4-flash
+  reasoning_effort: high
+  temperature: 1.0
+  max_concurrent: 10
+  max_output_tokens: 24576
+hardware:
+  description: NVIDIA RTX 5090 (Blackwell, sm_120), 32GB GDDR7, ~1790 GB/s peak bandwidth
+  peak_gbps: 1790
+gpus:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+kb:
+  use: true
+  dir: kb
+  max_exemplars: 2

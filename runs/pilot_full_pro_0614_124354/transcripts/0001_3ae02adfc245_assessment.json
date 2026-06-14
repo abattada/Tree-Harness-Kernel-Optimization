@@ -1,0 +1,20 @@
+{
+  "node_id": "3ae02adfc245",
+  "arm": "pilot_full_pro",
+  "operator": "geglu",
+  "round": 0,
+  "eval_index": 1,
+  "strategy": "seed",
+  "kind": "assessment",
+  "error": "",
+  "usage": {
+    "input_tokens": 894,
+    "output_tokens": 156,
+    "cached_tokens": 0,
+    "thought_tokens": 0
+  },
+  "system": "You are a GPU performance analyst. Given a Triton kernel,\nits measurements, the history of attempts, and prior experience, estimate how\nmuch speedup headroom remains and which strategies to try next. Be calibrated:\nkernels near the memory-bandwidth roofline have ~0 headroom regardless of code\nstyle.\n\nRespond with a single JSON object only (no markdown), with exactly these keys:\n{\n  \"headroom_pct\": <number, estimated remaining speedup headroom in percent;\n                   0 = already optimal, 50 = ~1.5x more plausible>,\n  \"bottleneck\": <string, one of: memory_bandwidth | compute | launch_overhead\n                 | occupancy | algorithm | unknown>,\n  \"suggested_strategies\": <array of strategy id strings, best first>,\n  \"confidence\": <integer 0-100>,\n  \"reasoning\": <string, one short paragraph>\n}",
+  "prompt": "OPERATOR: geglu (category: elementwise, memory-bound)\nHARDWARE PEAK BANDWIDTH: 1790 GB/s\nKERNEL:\n```python\nimport torch\nimport triton\nimport triton.language as tl\nfrom triton.language.extra import libdevice\nimport math\n\n\n@triton.jit\ndef geglu_kernel(x_ptr, out_ptr, N_COLS: tl.constexpr, BLOCK: tl.constexpr):\n    # Grid: (row, col_block)\n    row = tl.program_id(0)\n    col_block = tl.program_id(1)\n\n    # Element offsets for this block in the output (and first half of input)\n    offs = col_block * BLOCK + tl.arange(0, BLOCK)\n\n    # Coalesced loads of the two halves along the last dimension\n    a = tl.load(x_ptr + row * N_COLS + offs)\n    b = tl.load(x_ptr + row * N_COLS + offs + N_COLS // 2)\n\n    # GELU with tanh approximation\n    sqrt_2_pi = 0.7978845608028654\n    coeff = 0.044715\n    x_ = a\n    x3 = x_ * x_ * x_\n    arg = sqrt_2_pi * (x_ + coeff * x3)\n    tanh_val = libdevice.tanh(arg)\n    gelu_val = 0.5 * x_ * (1.0 + tanh_val)\n\n    out = gelu_val * b\n    tl.store(out_ptr + row * (N_COLS // 2) + offs, out)\n\n\ndef triton_run(x: torch.Tensor) -> torch.Tensor:\n    N, C = x.shape\n    # Allocate output: half the last dimension\n    out = torch.empty(N, C // 2, dtype=x.dtype, device=x.device)\n\n    # Power-of-two block size that exactly divides 4096 for the provided shape\n    BLOCK = 1024\n    grid = (N, (C // 2) // BLOCK)\n\n    geglu_kernel[grid](x, out, N_COLS=C, BLOCK=BLOCK)\n    return out\n```\nMEASUREMENT: correct=True  speedup=1.604x  triton=0.2718ms vs pytorch=0.4360ms  achieved_bw=1481GB/s (83% of peak)\nBRANCH HISTORY (strategy → outcome): seed→1.60x\nEstimate headroom_pct, the bottleneck, and the most promising strategy ids from the library: tune_block_size, tune_warps_stages, grid_loop_remap, constexpr_specialize, vectorized_access, multirow_per_program, cache_eviction_hints, mask_elimination, one_pass_welford, online_softmax, persistent_kernel, two_stage_reduction, kernel_fusion, tiling_shapes, group_swizzle, split_k, fast_math, precision_strategy, recompute_vs_store, atomic_free_combine.",
+  "response": "{\n  \"headroom_pct\": 5,\n  \"bottleneck\": \"memory_bandwidth\",\n  \"suggested_strategies\": [\"vectorized_access\", \"tune_block_size\", \"tune_warps_stages\"],\n  \"confidence\": 90,\n  \"reasoning\": \"Achieved bandwidth is already 83% of peak (1481/1790 GB/s), which is close to the practical memory bandwidth limit for a simple elementwise kernel. The kernel loads two contiguous halves and stores one, so it is memory-bound. Minor gains might come from wider vectorized loads to reduce instruction overhead, tuning block size or warps/stages for slightly better occupancy, but headroom is limited to at most ~5%.\"\n}",
+  "reasoning": ""
+}

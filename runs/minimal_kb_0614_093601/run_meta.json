@@ -1,0 +1,20 @@
+{
+  "arm": "minimal_kb",
+  "operators": [
+    "vector_add",
+    "softmax",
+    "sum",
+    "layer_norm",
+    "vector_exp"
+  ],
+  "started": "2026-06-14T09:36:05.094615",
+  "llm": {
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking_param": true,
+    "logprobs": true,
+    "cache_fields": true,
+    "confidence_mode_resolved": "logprobs",
+    "kb_entries": 11
+  }
+}

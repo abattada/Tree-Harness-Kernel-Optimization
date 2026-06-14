@@ -1,0 +1,17 @@
+arm: minimal_kb
+search:
+  mode: tree
+  beam_k: 2
+  expand_strategies: 3
+  impls_per_strategy: 2
+  rounds: 3
+strategy:
+  selector: none
+scorer:
+  enabled: false
+  use_suggestions: false
+kb:
+  use: true                 # only difference vs minimal: KB exemplars in prompts
+budget:
+  total_candidates: 12
+  minutes_per_operator: 15

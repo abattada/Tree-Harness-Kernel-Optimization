@@ -1,0 +1,21 @@
+{
+  "arm": "pilot_full_pro",
+  "wall_minutes": 22.28310328324636,
+  "best_speedup": {
+    "geglu": 1.6781665568686817,
+    "swiglu": 1.672049515753453,
+    "welford": 2.1679686588136855,
+    "rms_norm": 2.3021928337477156,
+    "cross_entropy": 2.113751884407298,
+    "fused_linear_cross_entropy": 1.211720332958081,
+    "kl_div": 4.6049182355911835,
+    "gemm": 0.936696839567299,
+    "addmm": 0.0,
+    "int4_gemm": 0.0,
+    "rope": 4.409107018345728,
+    "embedding": 1.00484489094771
+  },
+  "total_candidates": 138,
+  "total_tokens": 1371347,
+  "total_gpu_seconds": 525.514476776123
+}

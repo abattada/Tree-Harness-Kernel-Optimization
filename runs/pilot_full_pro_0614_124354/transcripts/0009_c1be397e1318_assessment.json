@@ -1,0 +1,20 @@
+{
+  "node_id": "c1be397e1318",
+  "arm": "pilot_full_pro",
+  "operator": "geglu",
+  "round": 1,
+  "eval_index": 9,
+  "strategy": "tune_block_size",
+  "kind": "assessment",
+  "error": "",
+  "usage": {
+    "input_tokens": 1012,
+    "output_tokens": 135,
+    "cached_tokens": 256,
+    "thought_tokens": 0
+  },
+  "system": "You are a GPU performance analyst. Given a Triton kernel,\nits measurements, the history of attempts, and prior experience, estimate how\nmuch speedup headroom remains and which strategies to try next. Be calibrated:\nkernels near the memory-bandwidth roofline have ~0 headroom regardless of code\nstyle.\n\nRespond with a single JSON object only (no markdown), with exactly these keys:\n{\n  \"headroom_pct\": <number, estimated remaining speedup headroom in percent;\n                   0 = already optimal, 50 = ~1.5x more plausible>,\n  \"bottleneck\": <string, one of: memory_bandwidth | compute | launch_overhead\n                 | occupancy | algorithm | unknown>,\n  \"suggested_strategies\": <array of strategy id strings, best first>,\n  \"confidence\": <integer 0-100>,\n  \"reasoning\": <string, one short paragraph>\n}",
+  "prompt": "OPERATOR: geglu (category: elementwise, memory-bound)\nHARDWARE PEAK BANDWIDTH: 1790 GB/s\nKERNEL:\n```python\nimport torch\nimport triton\nimport triton.language as tl\nimport math\nfrom triton.language.extra import libdevice\n\n\n@triton.jit\ndef geglu_kernel(\n    x_ptr, y_ptr,\n    M, N, N_out,\n    BLOCK_SIZE: tl.constexpr,\n):\n    pid_m = tl.program_id(0)          # row index\n    pid_n = tl.program_id(1)          # column-block index\n\n    row = pid_m\n    col_offs = pid_n * BLOCK_SIZE + tl.arange(0, BLOCK_SIZE)\n    mask = col_offs < N_out\n\n    # a comes from the first half, b from the second half\n    a_offs = row * N + col_offs\n    b_offs = row * N + col_offs + N_out\n\n    a = tl.load(x_ptr + a_offs, mask=mask, other=0.0)\n    b = tl.load(x_ptr + b_offs, mask=mask, other=0.0)\n\n    # GELU approximation: 0.5 * a * (1 + tanh( sqrt(2/pi) * (a + 0.044715*a^3) ))\n    sqrt_2_over_pi = 0.7978845608028654\n    inner = sqrt_2_over_pi * (a + 0.044715 * a * a * a)\n    tanh_inner = libdevice.tanh(inner)\n    gelu_a = 0.5 * a * (1.0 + tanh_inner)\n\n    result = gelu_a * b\n    tl.store(y_ptr + row * N_out + col_offs, result, mask=mask)\n\n\ndef triton_run(x: torch.Tensor) -> torch.Tensor:\n    assert x.ndim == 2 and x.shape[1] % 2 == 0, \"Input must be an even-wide 2D tensor\"\n    M, N = x.shape\n    N_out = N // 2\n\n    y = torch.empty((M, N_out), device=x.device, dtype=x.dtype)\n\n    BLOCK_SIZE = 1024      # tuned for this shape: larger tile reduces overhead, 8 warps keep registers balanced\n    grid = (M, triton.cdiv(N_out, BLOCK_SIZE))\n\n    geglu_kernel[grid](\n        x, y,\n        M, N, N_out,\n        BLOCK_SIZE=BLOCK_SIZE,\n        num_warps=8,\n        num_stages=2,\n    )\n    return y\n```\nMEASUREMENT: correct=True  speedup=1.606x  triton=0.2717ms vs pytorch=0.4362ms  achieved_bw=1482GB/s (83% of peak)\nBRANCH HISTORY (strategy → outcome): seed→1.58x; tune_block_size→1.61x\nEstimate headroom_pct, the bottleneck, and the most promising strategy ids from the library: tune_block_size, tune_warps_stages, grid_loop_remap, constexpr_specialize, vectorized_access, multirow_per_program, cache_eviction_hints, mask_elimination, one_pass_welford, online_softmax, persistent_kernel, two_stage_reduction, kernel_fusion, tiling_shapes, group_swizzle, split_k, fast_math, precision_strategy, recompute_vs_store, atomic_free_combine.",
+  "response": "{\n  \"headroom_pct\": 5,\n  \"bottleneck\": \"memory_bandwidth\",\n  \"suggested_strategies\": [\"cache_eviction_hints\", \"vectorized_access\"],\n  \"confidence\": 90,\n  \"reasoning\": \"Kernel achieves 1482 GB/s (83% of peak 1790 GB/s), leaving little bandwidth headroom. The elementwise nature is memory-bound, so further block size or occupancy tuning yields diminishing returns. Minor gains may come from cache eviction hints for the input tensor or vectorized loads to reduce instruction overhead, but speedup beyond a few percent is unlikely.\"\n}",
+  "reasoning": ""
+}

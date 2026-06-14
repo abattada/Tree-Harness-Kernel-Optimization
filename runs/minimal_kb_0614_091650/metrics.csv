@@ -1,0 +1,15 @@
+arm,operator,round,candidates_so_far,best_speedup_so_far,n_correct_so_far,cum_gpu_seconds,cum_tokens
+minimal_kb,rope,0,4,3.148321,4,19.8,22766
+minimal_kb,kl_div,0,4,4.422741,4,21.3,20927
+minimal_kb,rms_norm,0,4,2.321761,4,15.8,14587
+minimal_kb,welford,0,4,2.257896,4,15.4,19134
+minimal_kb,cross_entropy,0,4,2.147570,3,23.7,25859
+minimal_kb,geglu,0,4,1.679162,3,16.4,19747
+minimal_kb,embedding,0,4,1.000841,3,18.5,21367
+minimal_kb,rope,1,12,3.943467,11,57.6,93618
+minimal_kb,kl_div,1,12,4.575313,11,59.0,85597
+minimal_kb,welford,1,12,2.417363,12,45.4,68026
+minimal_kb,rms_norm,1,12,2.321761,11,47.1,61047
+minimal_kb,cross_entropy,1,12,2.181677,11,69.1,95943
+minimal_kb,geglu,1,12,1.681312,9,47.4,76465
+minimal_kb,embedding,1,12,1.000841,10,53.5,81182

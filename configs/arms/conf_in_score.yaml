@@ -1,0 +1,3 @@
+arm: conf_in_score
+confidence:
+  use_in_score: true

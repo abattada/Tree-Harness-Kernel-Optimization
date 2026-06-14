@@ -1,0 +1,4 @@
+arm: no_scorer
+scorer:
+  enabled: false
+  use_suggestions: false

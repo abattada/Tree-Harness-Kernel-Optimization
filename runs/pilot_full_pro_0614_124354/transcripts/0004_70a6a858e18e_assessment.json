@@ -1,0 +1,20 @@
+{
+  "node_id": "70a6a858e18e",
+  "arm": "pilot_full_pro",
+  "operator": "swiglu",
+  "round": 1,
+  "eval_index": 4,
+  "strategy": "tune_warps_stages",
+  "kind": "assessment",
+  "error": "",
+  "usage": {
+    "input_tokens": 984,
+    "output_tokens": 148,
+    "cached_tokens": 256,
+    "thought_tokens": 0
+  },
+  "system": "You are a GPU performance analyst. Given a Triton kernel,\nits measurements, the history of attempts, and prior experience, estimate how\nmuch speedup headroom remains and which strategies to try next. Be calibrated:\nkernels near the memory-bandwidth roofline have ~0 headroom regardless of code\nstyle.\n\nRespond with a single JSON object only (no markdown), with exactly these keys:\n{\n  \"headroom_pct\": <number, estimated remaining speedup headroom in percent;\n                   0 = already optimal, 50 = ~1.5x more plausible>,\n  \"bottleneck\": <string, one of: memory_bandwidth | compute | launch_overhead\n                 | occupancy | algorithm | unknown>,\n  \"suggested_strategies\": <array of strategy id strings, best first>,\n  \"confidence\": <integer 0-100>,\n  \"reasoning\": <string, one short paragraph>\n}",
+  "prompt": "OPERATOR: swiglu (category: elementwise, memory-bound)\nHARDWARE PEAK BANDWIDTH: 1790 GB/s\nKERNEL:\n```python\nimport torch\nimport triton\nimport triton.language as tl\n\n\n@triton.jit\ndef swiglu_kernel(\n    x_ptr,\n    out_ptr,\n    M,\n    N,\n    stride_x0,\n    stride_out0,\n    BLOCK_M: tl.constexpr,\n    BLOCK_N: tl.constexpr,\n):\n    pid_m = tl.program_id(0)\n    pid_n = tl.program_id(1)\n\n    rows = pid_m * BLOCK_M + tl.arange(0, BLOCK_M)\n    cols = pid_n * BLOCK_N + tl.arange(0, BLOCK_N)\n\n    rows_2d = rows[:, None]\n    cols_2d = cols[None, :]\n\n    mask = (rows_2d < M) & (cols_2d < N)\n\n    a_ptrs = x_ptr + rows_2d * stride_x0 + cols_2d\n    b_ptrs = x_ptr + rows_2d * stride_x0 + (cols_2d + N)\n    out_ptrs = out_ptr + rows_2d * stride_out0 + cols_2d\n\n    a = tl.load(a_ptrs, mask=mask, other=0.0)\n    b = tl.load(b_ptrs, mask=mask, other=0.0)\n\n    silu_a = a * tl.sigmoid(a)\n    out_val = silu_a * b\n\n    tl.store(out_ptrs, out_val, mask=mask)\n\n\ndef triton_run(x: torch.Tensor) -> torch.Tensor:\n    assert x.ndim == 2 and x.shape[1] % 2 == 0, \"Input must be 2D with even last dim\"\n    M, D = x.shape\n    N = D // 2\n    out = torch.empty((M, N), device=x.device, dtype=x.dtype)\n\n    BLOCK_M = 64\n    BLOCK_N = 128\n    grid = (triton.cdiv(M, BLOCK_M), triton.cdiv(N, BLOCK_N))\n\n    swiglu_kernel[grid](\n        x,\n        out,\n        M,\n        N,\n        x.stride(0),\n        out.stride(0),\n        BLOCK_M=BLOCK_M,\n        BLOCK_N=BLOCK_N,\n        num_warps=8,\n        num_stages=3,\n    )\n    return out\n```\nMEASUREMENT: correct=True  speedup=1.599x  triton=0.2724ms vs pytorch=0.4354ms  achieved_bw=1478GB/s (83% of peak)\nBRANCH HISTORY (strategy → outcome): seed→1.59x; tune_warps_stages→1.60x\nEstimate headroom_pct, the bottleneck, and the most promising strategy ids from the library: tune_block_size, tune_warps_stages, grid_loop_remap, constexpr_specialize, vectorized_access, multirow_per_program, cache_eviction_hints, mask_elimination, one_pass_welford, online_softmax, persistent_kernel, two_stage_reduction, kernel_fusion, tiling_shapes, group_swizzle, split_k, fast_math, precision_strategy, recompute_vs_store, atomic_free_combine.",
+  "response": "{\n  \"headroom_pct\": 5,\n  \"bottleneck\": \"memory_bandwidth\",\n  \"suggested_strategies\": [\"vectorized_access\", \"multirow_per_program\", \"cache_eviction_hints\"],\n  \"confidence\": 85,\n  \"reasoning\": \"Achieved 1478 GB/s (83% of peak 1790 GB/s) on a memory-bound elementwise kernel, leaving limited headroom. Further tuning of block sizes or warps/stages already explored (1.60x). Vectorized loads can better utilize memory bus, multirow per program may improve cache reuse, and eviction hints might reduce cache thrashing, but gains will be incremental.\"\n}",
+  "reasoning": ""
+}

@@ -1,0 +1,3 @@
+arm: no_memory
+scorer:
+  use_memory: false

@@ -1,0 +1,3 @@
+arm: no_bandit
+strategy:
+  selector: random

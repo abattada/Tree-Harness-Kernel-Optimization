@@ -1,0 +1,57 @@
+arm: default
+
+search:
+  mode: tree                # tree | sequential
+  beam_k: 4
+  expand_strategies: 4
+  impls_per_strategy: 2
+  rounds: 4
+
+strategy:
+  selector: bandit          # bandit | random
+
+scorer:
+  enabled: true
+  use_memory: true
+  use_suggestions: true     # scorer's suggested strategies seed next expansion
+  roofline_anchor: true
+  roofline_bw_cap: 0.85
+  headroom_beta: 0.3
+
+confidence:
+  mode: auto                # auto | logprobs | verbalized | none
+  use_in_score: false
+  conf_epsilon: 0.001
+
+budget:
+  total_candidates: 32      # per operator; sequential arms auto-match this
+  minutes_per_operator: 25
+  candidate_timeout_s: 120
+
+seeds:
+  input_seed: 42
+
+llm:
+  model: deepseek-v4-flash    # deepseek-v4-pro for the bigger model
+  reasoning_effort: high      # high | max (thinking mode for generation)
+  temperature: 1.0
+  max_concurrent: 10
+  max_output_tokens: 24576    # answer + reasoning tokens
+
+hardware:
+  description: "NVIDIA RTX 5090 (Blackwell, sm_120), 32GB GDDR7, ~1790 GB/s peak bandwidth"
+  peak_gbps: 1790
+
+gpus: [0, 1, 2, 3]
+# seconds between subprocess spawns, to avoid N simultaneous CUDA-init / Triton
+# compiles hammering the driver at launch. Raise it if you use many GPUs.
+launch_stagger_s: 0.75
+
+kb:
+  use: false
+  dir: kb
+  max_exemplars: 2
+
+transcripts:
+  enabled: true             # log each LLM exchange to runs/<arm>/transcripts/
+  include_reasoning: true   # also store the model's thinking/reasoning (large)

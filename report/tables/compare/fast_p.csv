@@ -1,0 +1,4 @@
+arm,n_operators,fast_1.0,fast_1.2,fast_1.5,n_candidates,correct_rate,gpu_minutes,mtokens
+agent_int4_gemm,1,1.0,0.0,0.0,10,0.8,1.0,0.0
+minimal_kb,14,0.714,0.429,0.429,222,0.743,15.4,1.52
+pilot_full_pro,12,0.75,0.667,0.583,138,0.5,8.8,1.37

@@ -1,0 +1,3 @@
+arm: no_roofline
+scorer:
+  roofline_anchor: false

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf runs/* kb/* && echo \"=== after wipe ===\" && find runs kb -mindepth 1 | head && echo \"\\(empty if nothing above\\)\" && ls -la runs kb)",
+      "Bash(python -m py_compile harness/eval_one.py harness/models.py harness/task.py)",
+      "Bash(conda activate *)",
+      "Bash(CUDA_VISIBLE_DEVICES=6 python -m harness.verifier --self-test)",
+      "Read(//opt/conda/envs/pro_max/bin/**)",
+      "Bash(conda env *)",
+      "Bash(grep -nA3 \"^gpus\\\\|max_concurrent\\\\|^llm\\\\|candidate_timeout\\\\|^budget\" configs/default.yaml)",
+      "Bash(python -m harness.task int4_gemm --init)",
+      "Bash(nvidia-smi --query-gpu=index,memory.used,utilization.gpu --format=csv)",
+      "Bash(python -m py_compile runs/agent_int4_gemm/attempts/k0.py)",
+      "Bash(python -m py_compile runs/agent_int4_gemm/attempts/k1.py)",
+      "Bash(python -)",
+      "Bash(cp runs/agent_int4_gemm/attempts/k1.py runs/agent_int4_gemm/attempts/k2.py)",
+      "Bash(python -m py_compile runs/agent_int4_gemm/attempts/k2.py)"
+    ],
+    "additionalDirectories": [
+      "/home/victor/para_final/pro_max/runs"
+    ]
+  }
+}
