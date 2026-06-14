@@ -2,8 +2,7 @@
 % what it WRITES, and its ITERATION scope. \input inside a figure* environment.
 \begin{tikzpicture}[
     font=\small,
-    panel/.style={draw, rounded corners, align=left, text width=40mm,
-                  fill=blue!4, inner sep=5pt},
+    panel/.style={draw, rounded corners, fill=blue!4, inner sep=5pt},
     agent/.style={draw, rounded corners, align=center, text width=34mm,
                   fill=orange!14, inner sep=4pt, minimum height=12mm},
     ev/.style={draw, rounded corners, align=center, text width=34mm,
@@ -11,10 +10,16 @@
     arr/.style={-{Latex[length=2mm]}, thick},
   ]
 
-  \node[panel] (reads) at (0,0) {\textbf{Agent READS} (session start)\\[3pt]
-    $\bullet$ task card: signature, tolerance,\\ \phantom{$\bullet$} PyTorch reference, forbidden\\ \phantom{$\bullet$} ops, roofline target\\
-    $\bullet$ KB exemplars (similar wins)\\
-    $\bullet$ handoff: \texttt{STATE.md},\\ \phantom{$\bullet$} \texttt{best.py}, journal tail};
+  \node[panel] (reads) at (0,0) {%
+    \begin{tabular}{@{}l@{}}
+    \textbf{Agent READS} (session start)\\[3pt]
+    $\bullet$~task card: signature, tolerance,\\
+    \quad PyTorch reference, forbidden ops,\\
+    \quad roofline target\\
+    $\bullet$~KB exemplars (similar wins)\\
+    $\bullet$~handoff: \texttt{STATE.md}, \texttt{best.py},\\
+    \quad journal tail
+    \end{tabular}};
 
   \node[agent] (agent) at (6.6,1.5)
     {\textbf{Agent} (Claude Opus,\\ effort ``extra high'')\\ write / refine kernel};
@@ -25,12 +30,16 @@
   \draw[arr] (eval) to[bend left=22]
         node[midway,left,font=\scriptsize,align=right]{\texttt{RESULT\_JSON}:\\traceback \emph{or}\\ speedup\,+\,bw} (agent);
 
-  \node[panel, fill=green!5] (writes) at (13.2,0)
-    {\textbf{Agent WRITES} (persisted)\\[3pt]
-    $\bullet$ \texttt{attempts/k$N$.py} (one/try)\\
-    $\bullet$ \texttt{journal.jsonl} via \texttt{eval\_one}\\ \phantom{$\bullet$} ($=$ budget counter; full record)\\
-    $\bullet$ \texttt{STATE.md}: status / tried /\\ \phantom{$\bullet$} pitfalls / next\\
-    $\bullet$ \texttt{best.py} (\texttt{-{}-export-best})};
+  \node[panel, fill=green!5] (writes) at (13.2,0) {%
+    \begin{tabular}{@{}l@{}}
+    \textbf{Agent WRITES} (persisted)\\[3pt]
+    $\bullet$~\texttt{attempts/k$N$.py} (one per try)\\
+    $\bullet$~\texttt{journal.jsonl} via \texttt{eval\_one}\\
+    \quad ($=$ budget counter; full record)\\
+    $\bullet$~\texttt{STATE.md}: status / tried /\\
+    \quad pitfalls / next\\
+    $\bullet$~\texttt{best.py} (\texttt{-{}-export-best})
+    \end{tabular}};
 
   \draw[arr] (reads.east) -- (agent.west);
   \draw[arr] (agent.east) -- (writes.north west);

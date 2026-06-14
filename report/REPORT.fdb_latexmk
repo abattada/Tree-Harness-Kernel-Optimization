@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex REPORT"] 1781451776.51133 "REPORT.aux" "REPORT.bbl" "REPORT" 1781451777.90507 0
+["bibtex REPORT"] 1781452606.5802 "REPORT.aux" "REPORT.bbl" "REPORT" 1781452642.02684 0
   "./IEEEtran.bst" 1781441829.21692 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
   "./refs.bib" 1781440024.24328 1633 61de4abfad4717e95b1e8ea9400aea40 ""
-  "REPORT.aux" 1781451777.71993 6934 c5e912e5deaf5e144dfd6988c982cf7b "pdflatex"
+  "REPORT.aux" 1781452641.86501 6934 2f12cf56a4b1e582d90366db3c5696fc "pdflatex"
   (generated)
   "REPORT.bbl"
   "REPORT.blg"
   (rewritten before read)
-["pdflatex"] 1781451776.54096 "REPORT.tex" "REPORT.pdf" "REPORT" 1781451777.9053 0
+["pdflatex"] 1781452640.69223 "REPORT.tex" "REPORT.pdf" "REPORT" 1781452642.02702 0
   "/etc/texmf/web2c/texmf.cnf" 1780318337.0133 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -206,17 +206,17 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1780318344.71003 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1780318374 6800791 1088ea96113fc04d4157b61987c7b89c ""
   "IEEEtran.cls" 1781441827.76097 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "REPORT.aux" 1781451777.71993 6934 c5e912e5deaf5e144dfd6988c982cf7b "pdflatex"
-  "REPORT.bbl" 1781451776.53498 1602 03f072a8eec4ea24fd8502f65b869023 "bibtex REPORT"
-  "REPORT.out" 1781451777.72093 3005 ffd5db41a56032529f64fb055dc7ec3b "pdflatex"
-  "REPORT.tex" 1781451760.62158 26082 b1127b98e96f43c39a0d48535a9f5d98 ""
+  "REPORT.aux" 1781452641.86501 6934 2f12cf56a4b1e582d90366db3c5696fc "pdflatex"
+  "REPORT.bbl" 1781452606.6041 1602 03f072a8eec4ea24fd8502f65b869023 "bibtex REPORT"
+  "REPORT.out" 1781452641.86601 3005 ffd5db41a56032529f64fb055dc7ec3b "pdflatex"
+  "REPORT.tex" 1781452631.68532 26100 02370c3e0e541601e77320877313efcd ""
   "appendix/agent_output.txt" 1781443986.34244 2775 50b9d7fa54f930e656f22f7707c44a2a ""
   "appendix/input_prompt.txt" 1781443986.34244 9140 66b5c66f8a910f010a9713623036242c ""
   "appendix/system_prompt.txt" 1781443986.34244 6400 4931a492c143ad3a79cb15a7d2a7fbd8 ""
   "figures/deepseek_speedup.png" 1781443986.02945 71189 54437b3507edd3c8403c68e9f91859b9 ""
   "figures/int4gemm_ladder.png" 1781443986.13845 55683 941e38c83fb6d86553532287140b1624 ""
-  "make_harness_fig.tex" 1781448348.14511 2363 1bf82803ddc2ffb5dcd7843d41febb75 ""
-  "make_pipeline_fig.tex" 1781444574.58578 2766 b4204680fb5195706bf3c2c8669d0b68 ""
+  "make_harness_fig.tex" 1781452574.06011 2372 77e24b813289280beb7e84a774bedea4 ""
+  "make_pipeline_fig.tex" 1781452409.85028 2994 674329a1095c56e5a5e4ba9bb55b155c ""
   (generated)
   "REPORT.aux"
   "REPORT.log"
