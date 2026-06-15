@@ -242,7 +242,9 @@ followed by Welford ($2.43\times$), RMSNorm ($2.32\times$), and cross-entropy
 control operators land at $0.99$--$1.07\times$: the engine correctly finds no
 headroom where the reference already saturates bandwidth. Across 222 candidates
 on 14 operators, 74\% were correct and 43\% of operators cleared $1.2\times$
-(Table~\ref{tab:ds}).
+(Table~\ref{tab:ds}). Best results for all 17 operators in the suite---including
+\texttt{swiglu} and \texttt{addmm}, not otherwise plotted---are in
+Appendix~\ref{app:allops}.
 
 \begin{figure}[t]
   \centering
@@ -429,6 +431,52 @@ repository.
 %  APPENDIX -- REQUIRED RAW MATERIALS (Category B)
 %==============================================================================
 \appendices
+
+\section{Complete Per-Operator Results}
+\label{app:allops}
+All 17 operators in the suite were run through the harness.
+Table~\ref{tab:allops} gives the best valid speedup for each and the engine that
+achieved it. 16 of 17 reached a correct kernel; only \texttt{addmm} (fp16
+bias-plus-matmul against cuBLAS) produced no correct candidate, like the other
+matmul kernels that cannot beat cuBLAS. Memory-bound figures are the
+\textsc{DeepSeek}-flash values from the main results (clean, exclusive-GPU
+timing); \texttt{swiglu} was only run with \textsc{DeepSeek}-pro.
+
+\begin{table}[h]
+  \centering \footnotesize
+  \caption{Best valid speedup over PyTorch eager for every operator in the
+  17-operator suite, and the engine that achieved it (DeepSeek API loop vs.\
+  Claude agent).}
+  \label{tab:allops}
+  \begin{tabular}{llrl}
+    \toprule
+    Operator & Category & Best & Engine \\
+    \midrule
+    \multicolumn{4}{@{}l}{\emph{Memory-bound, with headroom}}\\
+    \texttt{rope}          & positional    & 4.29$\times$ & DeepSeek \\
+    \texttt{kl\_div}       & loss          & 4.61$\times$ & DeepSeek \\
+    \texttt{welford}       & reduction     & 2.43$\times$ & DeepSeek \\
+    \texttt{rms\_norm}     & normalization & 2.32$\times$ & DeepSeek \\
+    \texttt{cross\_entropy}& loss          & 2.18$\times$ & DeepSeek \\
+    \texttt{geglu}         & elementwise   & 1.69$\times$ & DeepSeek \\
+    \texttt{swiglu}        & elementwise   & 1.67$\times$ & DeepSeek \\
+    \texttt{embedding}     & positional    & 1.00$\times$ & DeepSeek \\
+    \midrule
+    \multicolumn{4}{@{}l}{\emph{Memory-bound, at the roofline (control)}}\\
+    \texttt{layer\_norm}   & normalization & 1.07$\times$ & DeepSeek \\
+    \texttt{softmax}       & normalization & 1.01$\times$ & DeepSeek \\
+    \texttt{vector\_add}   & elementwise   & 1.00$\times$ & DeepSeek \\
+    \texttt{vector\_exp}   & elementwise   & 1.00$\times$ & DeepSeek \\
+    \texttt{sum}           & reduction     & 0.99$\times$ & DeepSeek \\
+    \midrule
+    \multicolumn{4}{@{}l}{\emph{Compute-bound (hard)}}\\
+    \texttt{flce}          & loss          & 5.15$\times$ & Claude agent \\
+    \texttt{int4\_gemm}    & matmul        & 1.09$\times$ & Claude agent \\
+    \texttt{gemm}          & matmul        & 1.01$\times$ & Claude agent \\
+    \texttt{addmm}         & matmul        & ---          & none \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 \section{Input Prompt}
 \label{app:input}
