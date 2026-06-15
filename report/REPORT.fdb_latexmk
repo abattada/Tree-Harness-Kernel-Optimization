@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex REPORT"] 1781488466.71993 "REPORT.aux" "REPORT.bbl" "REPORT" 1781492054.23048 0
+["bibtex REPORT"] 1781495307.58113 "REPORT.aux" "REPORT.bbl" "REPORT" 1781495309.0669 0
   "./IEEEtran.bst" 1781441829.21692 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
   "./refs.bib" 1781440024.24328 1633 61de4abfad4717e95b1e8ea9400aea40 ""
-  "REPORT.aux" 1781492054.07858 7656 b529eb6704c5ecbfb2341daa4b5318d2 "pdflatex"
+  "REPORT.aux" 1781495308.90221 8497 1f6d02e396bde690821c6a912c9516c6 "pdflatex"
   (generated)
   "REPORT.bbl"
   "REPORT.blg"
   (rewritten before read)
-["pdflatex"] 1781492053.06007 "REPORT.tex" "REPORT.pdf" "REPORT" 1781492054.23066 0
+["pdflatex"] 1781495307.61076 "REPORT.tex" "REPORT.pdf" "REPORT" 1781495309.06707 0
   "/etc/texmf/web2c/texmf.cnf" 1780318337.0133 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -206,15 +206,16 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1780318344.71003 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1780318374 6800791 1088ea96113fc04d4157b61987c7b89c ""
   "IEEEtran.cls" 1781441827.76097 281957 5b2e4fa15b0f7eabb840ebf67df4c0f7 ""
-  "REPORT.aux" 1781492054.07858 7656 b529eb6704c5ecbfb2341daa4b5318d2 "pdflatex"
-  "REPORT.bbl" 1781488466.74355 1602 03f072a8eec4ea24fd8502f65b869023 "bibtex REPORT"
-  "REPORT.out" 1781492054.07958 3267 576c6c8322689283b31b6bc41c051150 "pdflatex"
-  "REPORT.tex" 1781492042.90096 28840 0d86a0636d7ca796b76a2530dcddf76e ""
+  "REPORT.aux" 1781495308.90221 8497 1f6d02e396bde690821c6a912c9516c6 "pdflatex"
+  "REPORT.bbl" 1781495307.60424 1602 03f072a8eec4ea24fd8502f65b869023 "bibtex REPORT"
+  "REPORT.out" 1781495308.90321 3267 576c6c8322689283b31b6bc41c051150 "pdflatex"
+  "REPORT.tex" 1781495297.7515 29349 311e88b3c00a67eab44a2012b8c3c8e0 ""
   "appendix/agent_output.txt" 1781443986.34244 2775 50b9d7fa54f930e656f22f7707c44a2a ""
   "appendix/input_prompt.txt" 1781443986.34244 9140 66b5c66f8a910f010a9713623036242c ""
   "appendix/system_prompt.txt" 1781443986.34244 6400 4931a492c143ad3a79cb15a7d2a7fbd8 ""
-  "figures/deepseek_speedup.png" 1781443986.02945 71189 54437b3507edd3c8403c68e9f91859b9 ""
-  "figures/int4gemm_ladder.png" 1781443986.13845 55683 941e38c83fb6d86553532287140b1624 ""
+  "figures/budget_curves.png" 1781495276.00207 56229 8eadf254a198568786ae1d089badb40f ""
+  "figures/deepseek_speedup.png" 1781495275.77908 71189 54437b3507edd3c8403c68e9f91859b9 ""
+  "figures/int4gemm_ladder.png" 1781495275.88607 55683 941e38c83fb6d86553532287140b1624 ""
   "make_harness_fig.tex" 1781452574.06011 2372 77e24b813289280beb7e84a774bedea4 ""
   "make_pipeline_fig.tex" 1781452409.85028 2994 674329a1095c56e5a5e4ba9bb55b155c ""
   (generated)

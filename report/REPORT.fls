@@ -371,6 +371,11 @@ INPUT ./figures/deepseek_speedup.png
 INPUT ./figures/deepseek_speedup.png
 INPUT ./figures/deepseek_speedup.png
 INPUT ./figures/deepseek_speedup.png
+INPUT ./figures/budget_curves.png
+INPUT ./figures/budget_curves.png
+INPUT ./figures/budget_curves.png
+INPUT ./figures/budget_curves.png
+INPUT ./figures/budget_curves.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/times/ptmrc7t.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/vf/adobe/courier/pcrro7t.vf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrro8r.tfm

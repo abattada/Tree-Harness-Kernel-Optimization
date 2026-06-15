@@ -253,6 +253,17 @@ on 14 operators, 74\% were correct and 43\% of operators cleared $1.2\times$
   \label{fig:dsbar}
 \end{figure}
 
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/budget_curves.png}
+  \caption{Per-iteration optimization progress (DeepSeek API loop): best-so-far
+  speedup vs.\ candidates evaluated, for the focus operators whose search visibly
+  improves over iterations (flat-from-first-success operators omitted).
+  \texttt{cross\_entropy} is repaired at candidate~2; \texttt{rope} climbs via a
+  structural improvement around candidate~8.}
+  \label{fig:budget}
+\end{figure}
+
 \begin{table}[t]
   \centering \footnotesize
   \caption{DeepSeek API-loop totals (14 operators).}
@@ -399,9 +410,10 @@ strength.
 
 \textbf{Where the API loop wins.} Memory-bound operators reward a single good
 idea---fuse the passes---that the model already knows from the Liger family;
-correctness is then easy and the speedup follows. Budget curves (not shown) place
-most of the gain in the first few candidates, which argues for spending budget on
-seed diversity and fast repair rather than deep refinement. The control group
+correctness is then easy and the speedup follows. The budget curves
+(Fig.~\ref{fig:budget}) place most of the gain in the first few candidates, which
+argues for spending budget on seed diversity and fast repair rather than deep
+refinement. The control group
 matters: reporting $\approx 1.0\times$ where the roofline leaves no room is what
 makes the large speedups credible.
 

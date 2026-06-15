@@ -128,12 +128,18 @@ def fig_budget_curves():
                 best = r["speedup"]
             xs.append(k)
             ys.append(best)
-        ax.plot(xs, ys, marker=".", label=op)
+        # keep only operators that visibly improve AFTER their first correct
+        # kernel (>=3% refinement gain); flat-from-first-success operators add
+        # no "optimization progress" signal.
+        first_ok = next((v for v in ys if v > 0), 0.0)
+        if first_ok <= 0 or max(ys) <= first_ok * 1.03:
+            continue
+        ax.plot(xs, ys, marker="o", ms=4, label=op)
     ax.axhline(1.0, ls="--", c="gray", lw=0.8)
     ax.set_xlabel("candidates evaluated (per operator)")
     ax.set_ylabel("best valid speedup (x)")
-    ax.set_title("DeepSeek API loop — best-so-far vs budget (focus operators)")
-    ax.legend(fontsize=8, ncol=2)
+    ax.set_title("DeepSeek API loop — operators that improve over iterations")
+    ax.legend(fontsize=9)
     fig.tight_layout()
     fig.savefig(FIG / "budget_curves.png", dpi=150)
     plt.close(fig)
