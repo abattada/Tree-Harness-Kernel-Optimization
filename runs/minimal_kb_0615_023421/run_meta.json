@@ -1,0 +1,16 @@
+{
+  "arm": "minimal_kb",
+  "operators": [
+    "swiglu"
+  ],
+  "started": "2026-06-15T02:34:23.851643",
+  "llm": {
+    "model": "deepseek-v4-flash",
+    "base_url": "https://api.deepseek.com",
+    "thinking_param": true,
+    "logprobs": true,
+    "cache_fields": true,
+    "confidence_mode_resolved": "logprobs",
+    "kb_entries": 26
+  }
+}

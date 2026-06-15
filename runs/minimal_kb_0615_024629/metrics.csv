@@ -1,0 +1,4 @@
+arm,operator,round,candidates_so_far,best_speedup_so_far,n_correct_so_far,cum_gpu_seconds,cum_tokens
+minimal_kb,addmm,0,4,0.000000,0,5.8,16827
+minimal_kb,addmm,1,8,0.000000,0,11.5,39600
+minimal_kb,addmm,2,12,0.000000,0,25.9,63401

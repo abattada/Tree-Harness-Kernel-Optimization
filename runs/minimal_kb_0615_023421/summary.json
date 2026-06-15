@@ -1,0 +1,10 @@
+{
+  "arm": "minimal_kb",
+  "wall_minutes": 2.3611339211463926,
+  "best_speedup": {
+    "swiglu": 1.6884921143632716
+  },
+  "total_candidates": 24,
+  "total_tokens": 161985,
+  "total_gpu_seconds": 89.93891310691833
+}

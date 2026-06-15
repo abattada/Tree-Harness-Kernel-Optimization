@@ -243,8 +243,7 @@ control operators land at $0.99$--$1.07\times$: the engine correctly finds no
 headroom where the reference already saturates bandwidth. Across 222 candidates
 on 14 operators, 74\% were correct and 43\% of operators cleared $1.2\times$
 (Table~\ref{tab:ds}). Best results for all 17 operators in the suite---including
-\texttt{swiglu} and \texttt{addmm}, not otherwise plotted---are in
-Appendix~\ref{app:allops}.
+\texttt{swiglu}, not otherwise plotted---are in Appendix~\ref{app:allops}.
 
 \begin{figure}[t]
   \centering
@@ -300,9 +299,10 @@ other hard operators. On fused-linear cross-entropy (\texttt{flce}) the flash AP
 loop produced 0 of 12 correct and pro managed only $1.21\times$, whereas the agent
 reached about $5\times$ (best $5.1\times$, independently re-measured at $4.6\times$
 on an idle GPU) by fusing the logit reduction so the 268\,MB logit tensor is never
-materialized. On plain \texttt{gemm} no engine beats cuBLAS: the agent's best
-($1.01\times$, 9/14 correct) merely matches it, as expected for an already-optimal
-fp16 GEMM. The hard kernels reward the agent's compile--read--repair loop.
+materialized. On plain \texttt{gemm} and \texttt{addmm} no engine beats cuBLAS:
+the API loop produces 0/12 correct for both, while the agent merely matches it
+($1.01\times$), as expected for already-optimal fp16 GEMM. The hard kernels reward
+the agent's compile--read--repair loop.
 
 \subsection{Scaling the generator: flash vs.\ pro}
 To test whether the API loop's failures are simply a matter of a weak model, we
@@ -318,8 +318,10 @@ discarded---timing requires an exclusive card.) The larger model does help on on
 hard case---it cracked \texttt{flce} (2/8 correct, $1.21\times$)
 where flash got 0/12---but \texttt{int4\_gemm} remained 0/12 for \emph{both}
 models, and \texttt{gemm}/\texttt{addmm} stayed below the cuBLAS baseline. Scaling
-the single-shot generator does not close the gap that the agent closes (the agent
-reaches $5\times$ on \texttt{flce} and $1.09\times$ on \texttt{int4\_gemm}).
+the single-shot generator does not close the gap that the agent closes: the agent
+reaches $5\times$ on \texttt{flce}, $1.09\times$ on \texttt{int4\_gemm}, and matches
+cuBLAS on \texttt{gemm} and \texttt{addmm} ($\approx$1.0$\times$), where the API
+loop produced no correct kernel at all.
 
 \begin{table}[t]
   \centering \footnotesize
@@ -333,6 +335,7 @@ reaches $5\times$ on \texttt{flce} and $1.09\times$ on \texttt{int4\_gemm}).
     \texttt{int4\_gemm} & 0/12 & 0/12 & 8/10\,@1.09 & \textbf{1.09$\times$} (B) \\
     \texttt{flce}       & 0/12 & 2/8\,@1.21 & 6/7\,@5.1 & \textbf{5.1$\times$} (B) \\
     \texttt{gemm}       & 0/12 & 3/12\,@0.94 & 9/14\,@1.01 & 1.01$\times$ (B) \\
+    \texttt{addmm}      & 0/12 & 0/12 & 5/6\,@1.01 & 1.01$\times$ (B) \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -434,13 +437,12 @@ repository.
 
 \section{Complete Per-Operator Results}
 \label{app:allops}
-All 17 operators in the suite were run through the harness.
-Table~\ref{tab:allops} gives the best valid speedup for each and the engine that
-achieved it. 16 of 17 reached a correct kernel; only \texttt{addmm} (fp16
-bias-plus-matmul against cuBLAS) produced no correct candidate, like the other
-matmul kernels that cannot beat cuBLAS. Memory-bound figures are the
-\textsc{DeepSeek}-flash values from the main results (clean, exclusive-GPU
-timing); \texttt{swiglu} was only run with \textsc{DeepSeek}-pro.
+All 17 operators in the suite were run through the harness, and all 17 reached a
+correct kernel. Table~\ref{tab:allops} gives the best valid speedup for each and
+the engine that achieved it. The dense matmul kernels (\texttt{gemm},
+\texttt{addmm}) only match cuBLAS ($\approx$1.0$\times$), as expected for an
+already-optimal fp16 GEMM, and both were solved by the agent. Memory-bound figures
+are the \textsc{DeepSeek}-flash values (clean, exclusive-GPU timing).
 
 \begin{table}[h]
   \centering \footnotesize
@@ -459,7 +461,7 @@ timing); \texttt{swiglu} was only run with \textsc{DeepSeek}-pro.
     \texttt{rms\_norm}     & normalization & 2.32$\times$ & DeepSeek \\
     \texttt{cross\_entropy}& loss          & 2.18$\times$ & DeepSeek \\
     \texttt{geglu}         & elementwise   & 1.69$\times$ & DeepSeek \\
-    \texttt{swiglu}        & elementwise   & 1.67$\times$ & DeepSeek \\
+    \texttt{swiglu}        & elementwise   & 1.69$\times$ & DeepSeek \\
     \texttt{embedding}     & positional    & 1.00$\times$ & DeepSeek \\
     \midrule
     \multicolumn{4}{@{}l}{\emph{Memory-bound, at the roofline (control)}}\\
@@ -473,7 +475,7 @@ timing); \texttt{swiglu} was only run with \textsc{DeepSeek}-pro.
     \texttt{flce}          & loss          & 5.15$\times$ & Claude agent \\
     \texttt{int4\_gemm}    & matmul        & 1.09$\times$ & Claude agent \\
     \texttt{gemm}          & matmul        & 1.01$\times$ & Claude agent \\
-    \texttt{addmm}         & matmul        & ---          & none \\
+    \texttt{addmm}         & matmul        & 1.01$\times$ & Claude agent \\
     \bottomrule
   \end{tabular}
 \end{table}

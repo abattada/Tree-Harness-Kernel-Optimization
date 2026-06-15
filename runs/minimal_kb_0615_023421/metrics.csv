@@ -1,0 +1,4 @@
+arm,operator,round,candidates_so_far,best_speedup_so_far,n_correct_so_far,cum_gpu_seconds,cum_tokens
+minimal_kb,swiglu,0,4,1.674159,4,15.5,19334
+minimal_kb,swiglu,1,16,1.688492,15,60.6,107753
+minimal_kb,swiglu,2,24,1.688492,23,89.9,161985

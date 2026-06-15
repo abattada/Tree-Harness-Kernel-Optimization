@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.1)  15 JUN 2026 01:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.6.1)  15 JUN 2026 02:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,13 +820,13 @@ Underfull \hbox (badness 5711) in paragraph at lines 217--234
 <figures/deepseek_speedup.png, id=111, 650.43pt x 303.534pt>
 File: figures/deepseek_speedup.png Graphic file (type png)
 <use figures/deepseek_speedup.png>
-Package pdftex.def Info: figures/deepseek_speedup.png  used on input line 251.
+Package pdftex.def Info: figures/deepseek_speedup.png  used on input line 250.
 (pdftex.def)             Requested size: 252.0pt x 117.59967pt.
 [2]
 <figures/int4gemm_ladder.png, id=127, 505.89pt x 303.534pt>
 File: figures/int4gemm_ladder.png Graphic file (type png)
 <use figures/int4gemm_ladder.png>
-Package pdftex.def Info: figures/int4gemm_ladder.png  used on input line 289.
+Package pdftex.def Info: figures/int4gemm_ladder.png  used on input line 288.
 (pdftex.def)             Requested size: 206.64185pt x 123.98659pt.
  [3 <./figures/deepseek_speedup.png>] [4 <./figures/int4gemm_ladder.png>]
 (./REPORT.bbl)
@@ -834,7 +834,7 @@ Package pdftex.def Info: figures/int4gemm_ladder.png  used on input line 289.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 488.
+nput line 490.
 (./appendix/input_prompt.txt [5]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -881,7 +881,7 @@ Package rerunfilecheck Info: File `REPORT.out' has not changed.
 Here is how much of TeX's memory you used:
  23954 strings out of 476182
  437003 string characters out of 5795596
- 3095975 words of memory out of 5000000
+ 3081975 words of memory out of 5000000
  45079 multiletter control sequences out of 15000+600000
  608244 words of font info for 136 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -901,7 +901,7 @@ live/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
 r8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on REPORT.pdf (10 pages, 352042 bytes).
+Output written on REPORT.pdf (10 pages, 352104 bytes).
 PDF statistics:
  774 PDF objects out of 1000 (max. 8388607)
  716 compressed objects within 8 object streams
